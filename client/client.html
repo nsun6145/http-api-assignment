@@ -7,6 +7,66 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
   <script type="text/babel">
 
+
+const init = () =>{
+    console.log("hhhhhhhhhhhhhh");
+    const statusValue = document.querySelector('#page');
+    const typeValue = document.querySelector('#type');
+    
+      const success = () => sendAjax('/success');
+      const badRequest = () => sendAjax('/badRequest');
+      const notImp = () => sendAjax('/notImplemented');
+      const unAuth = () => sendAjax('/unauthorized');
+      const forbidden = () => sendAjax('/forbidden');
+    const internal = () => sendAjax('/internal');
+    
+    document.querySelector('#send').addEventListener("click", ()=> {
+            console.log("xx");
+            sendAjax(document.querySelector("#page").value);
+      
+
+    });
+    
+}
+
+   window.onload = init;
+    
+    const handleResponse = (xhr) => {
+        const content = document.querySelector("#content");
+        ///parse the response text into a JSON object
+      //const obj = JSON.parse(xhr.response);
+    console.dir(xhr);
+        let id = document.querySelector("#id");
+        let messageContent = document.querySelector("#message");
+        if(xhr.responseXML){
+            id.innerHTML = xhr.responseXML.querySelector("#id").textContent;
+            messageContent.innerHTML = xhr.responseXML.querySelector("#message").textContent;
+        }
+        
+        else {
+            const responseObj = JSON.parse(xhr.response);
+          console.dir(responseObj);
+          console.log(id.innerHTML);
+            id.innerHTML = responseObj.id;
+            message.innerHTML = responseObj.message;
+        }
+    };
+
+ //function to send ajax
+    const sendAjax = (url) => {
+      //create a new xhr (ajax) request. 
+      const xhr = new XMLHttpRequest();
+      //set the xhr to a GET request to a certain URL
+      xhr.open('GET', url);
+      xhr.setRequestHeader ("Accept", 'application/json');
+
+      //When the xhr loads, call handleResponse and pass the xhr object
+      xhr.onload = () => handleResponse(xhr);
+
+      //send ajax request to the server
+      xhr.send();
+    };
+
   </script>
 </head>
 <body>
@@ -28,6 +88,9 @@
     <button id="send">Send</button>
   </section>
   <section id="content">
+      <div id = "id">12</div>
+      <br>
+      <div id= "message"></div>
   </section>
 </body>
 </html>

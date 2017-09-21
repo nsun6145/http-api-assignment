@@ -9,7 +9,6 @@
 
 
 const init = () =>{
-    console.log("hhhhhhhhhhhhhh");
     const statusValue = document.querySelector('#page');
     const typeValue = document.querySelector('#type');
     
@@ -21,7 +20,6 @@ const init = () =>{
     const internal = () => sendAjax('/internal');
     
     document.querySelector('#send').addEventListener("click", ()=> {
-            console.log("xx");
             sendAjax(document.querySelector("#page").value);
       
 

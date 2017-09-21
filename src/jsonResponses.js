@@ -12,7 +12,7 @@ const respondXML = (request,response,status,obj,acceptedTypes)=>{
   //pass in responseJSON as obj
   responseXML =`${responseXML}<id>${obj.id}</id>`;
   responseXML = `${responseXML}<message>${obj.message}</message>`;
-  responseXML = "</response>"
+  responseXML = `${responseXML} </response>`;   
 /*    
   //set status code and content type (application/json)
   response.writeHead(status, { 'Content-Type': 'text/xml' });

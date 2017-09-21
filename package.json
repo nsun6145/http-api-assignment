@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "HTTP API",
   "main": "index.js",
+  "dependencies":{},
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0"
+  },
   "scripts": {
     "start": "node ./src/server.js",
     "pretest": "eslint ./src --fix",
@@ -17,9 +23,5 @@
   "bugs": {
     "url": "https://github.com/nsun6145/http-api-assignment/issues"
   },
-  "homepage": "https://github.com/nsun6145/http-api-assignment#readme",
-  "devDependencies": {
-    "eslint": "^4.7.1",
-    "eslint-config-google": "^0.9.1"
-  }
+  "homepage": "https://github.com/nsun6145/http-api-assignment#readme"
 }
